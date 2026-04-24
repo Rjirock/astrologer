@@ -21,7 +21,7 @@ function StarField({ count = 55 }) {
   );
 }
  
-export function ServicesHero() {
+export default function ServicesHero() {
   return (
     <section
       aria-label="Services hero"
