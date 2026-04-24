@@ -1,0 +1,379 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* === LUXURY SPIRITUAL PALETTE === */
+  --gold: #C8960C;
+  --gold-light: #E8B923;
+  --gold-dark: #9A6F08;
+  --gold-pale: #F5DFA0;
+
+  --maroon: #7A1228;
+  --maroon-dark: #4A0818;
+  --maroon-light: #A01A35;
+
+  --dark-1: #08030A;
+  --dark-2: #110A14;
+  --dark-3: #1C1020;
+  --dark-4: #261528;
+
+  --cream: #F8F2E6;
+  --cream-muted: #C0B09A;
+
+  --saffron: #D4731A;
+  --saffron-light: #E8922A;
+
+  --sacred-green: #1E5C30;
+  --sacred-green-light: #2A7A40;
+
+  /* === SEMANTIC TOKENS === */
+  --background: var(--dark-1);
+  --foreground: var(--cream);
+  --card: var(--dark-2);
+  --card-foreground: var(--cream);
+  --popover: var(--dark-2);
+  --popover-foreground: var(--cream);
+  --primary: var(--gold);
+  --primary-foreground: var(--dark-1);
+  --secondary: var(--maroon);
+  --secondary-foreground: var(--cream);
+  --muted: var(--dark-3);
+  --muted-foreground: var(--cream-muted);
+  --accent: var(--saffron);
+  --accent-foreground: var(--dark-1);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
+  --border: rgba(200, 150, 12, 0.2);
+  --input: var(--dark-3);
+  --ring: var(--gold);
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --font-sans: var(--font-lato), 'Lato', sans-serif;
+  --font-serif: var(--font-cinzel), 'Cinzel', serif;
+  --font-mono: 'Geist Mono', monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand tokens */
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
+  --color-gold-pale: var(--gold-pale);
+  --color-maroon: var(--maroon);
+  --color-maroon-dark: var(--maroon-dark);
+  --color-maroon-light: var(--maroon-light);
+  --color-saffron: var(--saffron);
+  --color-saffron-light: var(--saffron-light);
+  --color-cream: var(--cream);
+  --color-cream-muted: var(--cream-muted);
+  --color-dark-1: var(--dark-1);
+  --color-dark-2: var(--dark-2);
+  --color-dark-3: var(--dark-3);
+  --color-dark-4: var(--dark-4);
+  --color-sacred-green: var(--sacred-green);
+  --color-sacred-green-light: var(--sacred-green-light);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    box-sizing: border-box;
+  }
+  body {
+    @apply bg-background text-foreground font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+  }
+}
+
+/* ===================== KEYFRAMES ===================== */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes floatUp {
+  0%, 100% { transform: translateY(0px); opacity: 0.6; }
+  50% { transform: translateY(-18px); opacity: 1; }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 12px rgba(200, 150, 12, 0.3), 0 0 24px rgba(200, 150, 12, 0.1);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(200, 150, 12, 0.6), 0 0 48px rgba(200, 150, 12, 0.25);
+  }
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+@keyframes borderGlow {
+  0%, 100% { border-color: rgba(200, 150, 12, 0.3); }
+  50% { border-color: rgba(232, 185, 35, 0.8); }
+}
+
+@keyframes glow {
+  0%, 100% { 
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1.15);
+  }
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* ===================== UTILITIES ===================== */
+
+/* Gold shimmer text */
+.text-gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--gold-dark) 0%,
+    var(--gold) 30%,
+    var(--gold-pale) 50%,
+    var(--gold) 70%,
+    var(--gold-dark) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
+/* Gold gradient text (static) */
+.text-gold-gradient {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold-light), var(--gold-pale));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Hero cosmic background */
+.hero-bg {
+  background:
+    radial-gradient(ellipse at 15% 50%, rgba(122, 18, 40, 0.45) 0%, transparent 55%),
+    radial-gradient(ellipse at 85% 20%, rgba(200, 150, 12, 0.12) 0%, transparent 45%),
+    radial-gradient(ellipse at 50% 95%, rgba(122, 18, 40, 0.35) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 0%, rgba(200, 150, 12, 0.08) 0%, transparent 40%),
+    linear-gradient(160deg, #08030A 0%, #110A14 35%, #1C1020 65%, #08030A 100%);
+}
+
+/* Section dark bg with subtle mandala glow */
+.section-bg-glow {
+  background:
+    radial-gradient(ellipse at 50% 50%, rgba(200, 150, 12, 0.05) 0%, transparent 70%),
+    var(--dark-2);
+}
+
+/* Gold divider line */
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(200, 150, 12, 0.4) 20%,
+    var(--gold) 50%,
+    rgba(200, 150, 12, 0.4) 80%,
+    transparent 100%
+  );
+}
+
+/* Gold divider with ornament */
+.gold-divider-ornament {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.gold-divider-ornament::before,
+.gold-divider-ornament::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+/* Card base */
+.spiritual-card {
+  background: var(--dark-2);
+  border: 1px solid rgba(200, 150, 12, 0.18);
+  border-radius: var(--radius);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.spiritual-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px rgba(200,150,12,0.45);
+  border-color: rgba(200, 150, 12, 0.5);
+}
+
+/* Gold pulse glow */
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+/* Rotate slow */
+.animate-rotate-slow {
+  animation: rotateSlow 25s linear infinite;
+}
+
+/* Twinkle */
+.animate-twinkle {
+  animation: twinkle 2s ease-in-out infinite;
+}
+
+/* Float up */
+.animate-float-up {
+  animation: floatUp 4s ease-in-out infinite;
+}
+
+/* Buttons */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+  color: var(--dark-1);
+  font-weight: 700;
+  font-family: var(--font-serif);
+  letter-spacing: 0.05em;
+  border-radius: var(--radius);
+  padding: 14px 32px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(200, 150, 12, 0.35);
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, var(--gold), var(--gold-light), var(--gold-pale));
+  box-shadow: 0 8px 30px rgba(200, 150, 12, 0.55);
+  transform: translateY(-2px);
+  color: var(--dark-1);
+}
+
+.btn-outline-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--gold);
+  font-weight: 700;
+  font-family: var(--font-serif);
+  letter-spacing: 0.05em;
+  border-radius: var(--radius);
+  padding: 12px 30px;
+  border: 2px solid var(--gold);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn-outline-gold:hover {
+  background: var(--gold);
+  color: var(--dark-1);
+  box-shadow: 0 8px 30px rgba(200, 150, 12, 0.45);
+  transform: translateY(-2px);
+}
+
+/* Image placeholder */
+.img-placeholder {
+  background: linear-gradient(135deg, var(--dark-3), var(--dark-4));
+  border: 1px solid rgba(200, 150, 12, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.img-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(200,150,12,0.06), transparent 70%);
+}
+
+/* Sacred icon wrapper */
+.icon-sacred {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, rgba(200,150,12,0.15), rgba(200,150,12,0.05));
+  border: 1px solid rgba(200, 150, 12, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.spiritual-card:hover .icon-sacred {
+  background: linear-gradient(135deg, rgba(200,150,12,0.3), rgba(200,150,12,0.1));
+  border-color: var(--gold);
+  box-shadow: 0 0 20px rgba(200,150,12,0.3);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--dark-1); }
+::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+/* Smooth scroll */
+html { scroll-behavior: smooth; }
+
+/* Star twinkle particles */
+.star-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--gold-light);
+  pointer-events: none;
+}
