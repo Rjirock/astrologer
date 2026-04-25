@@ -300,7 +300,7 @@ export default function ServicesSection() {
           }
 
           .card-img-wrapper {
-            height: 160px;
+            height: 100px;
           }
 
           .card-body-padding {
