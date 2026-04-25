@@ -99,7 +99,7 @@ function ServiceCard({ service, isVisible }) {
       <div className="card-top-line" />
 
       {/* Image */}
-      <div style={{ position: "relative", width: "100%", height: "210px", overflow: "hidden" }}>
+      <div className="card-img-wrapper" style={{ position: "relative", width: "100%", overflow: "hidden" }}>
         <img
           src={service.image}
           alt={service.title}
@@ -147,7 +147,7 @@ function ServiceCard({ service, isVisible }) {
       </div>
 
       {/* Body */}
-      <div style={{ padding: "18px 20px 20px" }}>
+      <div className="card-body-padding">
         <div
           className="card-title-el"
           style={{
@@ -255,6 +255,16 @@ export default function ServicesSection() {
           overflow: hidden;
         }
 
+        /* ── Card image height ── */
+        .card-img-wrapper {
+          height: 210px;
+        }
+
+        /* ── Card body padding (desktop default) ── */
+        .card-body-padding {
+          padding: 18px 20px 20px;
+        }
+
         .stars-overlay {
           position: absolute;
           top: 0; left: 0; right: 0; bottom: 0;
@@ -281,6 +291,25 @@ export default function ServicesSection() {
           margin: 0 auto;
           position: relative;
           z-index: 1;
+        }
+
+        /* ── Mobile overrides ── */
+        @media (max-width: 480px) {
+          .services-section-bg {
+            padding: 36px 14px 50px;
+          }
+
+          .card-img-wrapper {
+            height: 160px;
+          }
+
+          .card-body-padding {
+            padding: 12px 14px 14px;
+          }
+
+          .services-grid-layout {
+            gap: 14px;
+          }
         }
 
         @media (max-width: 768px) {
