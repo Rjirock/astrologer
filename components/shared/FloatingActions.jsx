@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Phone, X, MessageCircle } from 'lucide-react';
 
 const PHONE_NUMBER = '+917739606061';
-const WHATSAPP_NUMBER = '917739606061';
+const WHATSAPP_NUMBER = '+917004419491';
 const WHATSAPP_MESSAGE = encodeURIComponent(
   `🙏 Namaste Pandit Ji,\n\nI visited your website and would like to book a consultation.\n\nI am seeking guidance regarding:\n• [Please specify: Kundali/Marriage/Career/Vastu/Other]\n\nKindly let me know your availability and consultation process.\n\nThank you.`
 );
