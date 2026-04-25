@@ -105,9 +105,24 @@ export default function HeroSection() {
               Vedic Jyotish &bull; 25+ Years Experience
               <Star size={10} fill="currentColor" />
             </div>
+            <h1
+              className="font-serif font-bold leading-tight"
+              style={{
+                fontSize: 'clamp(1.9rem, 5.5vw, 4rem)',
+                color: 'var(--cream)',
+                marginBottom: 'clamp(4rem, 2.5vw, 3rem)',
+                maxWidth: '20ch',
+                lineHeight: 1.13,
+              }}
+            >
+              Indian Famous Astrologer{' '}
+              <span className="text-gold-shimmer">
+                Sri Jagannath Pandit Ram Kishan
+              </span>
+            </h1>
 
             {/* Heading */}
-            <h1
+            <h2
               className="font-serif font-bold leading-tight"
               style={{
                 fontSize: 'clamp(1.9rem, 5.5vw, 4rem)',
@@ -121,7 +136,7 @@ export default function HeroSection() {
               <span className="text-gold-shimmer">
                 Life, Marriage, Career &amp; Peace
               </span>
-            </h1>
+            </h2>
 
             {/* Sub-heading */}
             <p
@@ -232,7 +247,7 @@ export default function HeroSection() {
               }}
             >
               <Image
-                src="/images/pandit-ji.jpg"
+                src="/logo.png"
                 alt="Shree Jagannath Pandit Ram Kishan"
                 fill
                 className="object-cover object-top"
@@ -266,9 +281,6 @@ export default function HeroSection() {
               <div>
                 <p className="font-serif font-bold" style={{ fontSize: 'clamp(10px, 1.1vw, 12px)', color: 'var(--gold)', lineHeight: 1.3 }}>
                   Shree Jagannath
-                </p>
-                <p style={{ fontSize: 'clamp(9px, 1vw, 11px)', color: 'var(--cream-muted)' }}>
-                  Pandit Ram Kishan
                 </p>
               </div>
             </div>

@@ -18,6 +18,30 @@ const services = [
   'Tarot Reading',
 ];
 
+// ✅ ADD YOUR REAL SOCIAL LINKS HERE
+const socialLinks = [
+  {
+    icon: Facebook,
+    label: 'Facebook',
+    href: 'https://www.facebook.com/YOUR_PAGE_NAME', // 👈 replace this
+  },
+  {
+    icon: Instagram,
+    label: 'Instagram',
+    href: 'https://www.instagram.com/shree_jagannath_pandit?igsh=MW4zanJvZXFyNDNncw==', // 👈 replace this
+  },
+  {
+    icon: Youtube,
+    label: 'YouTube',
+    href: 'https://www.youtube.com/@YOUR_CHANNEL',   // 👈 replace this
+  },
+  {
+    icon: Twitter,
+    label: 'Twitter',
+    href: 'https://www.twitter.com/YOUR_USERNAME',   // 👈 replace this
+  },
+];
+
 export default function Footer() {
   return (
     <footer style={{ background: 'var(--dark-2)', borderTop: '1px solid rgba(200,150,12,0.2)' }}>
@@ -45,17 +69,15 @@ export default function Footer() {
             <p className="text-sm leading-relaxed mb-5" style={{ color: 'var(--cream-muted)' }}>
               Trusted astrologer guiding thousands of families towards clarity, peace, and prosperity through authentic Vedic wisdom.
             </p>
-            {/* Social icons */}
+
+            {/* ✅ Social Icons with real links */}
             <div className="flex gap-3">
-              {[
-                { icon: Facebook, label: 'Facebook' },
-                { icon: Instagram, label: 'Instagram' },
-                { icon: Youtube, label: 'YouTube' },
-                { icon: Twitter, label: 'Twitter' },
-              ].map(({ icon: Icon, label }) => (
+              {socialLinks.map(({ icon: Icon, label, href }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-300 hover:scale-110"
                   style={{
@@ -132,18 +154,18 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="mailto:123@gmail.com"
+                  href="mailto:shreejagannathramkrishnashastr@gmail.com"
                   className="flex items-start gap-3 text-sm"
                   style={{ color: 'var(--cream-muted)' }}
                 >
                   <Mail size={16} style={{ color: 'var(--gold)', marginTop: '2px', flexShrink: 0 }} />
-                  123@gmail.com
+                  shreejagannathramkrishnashastr@gmail.com
                 </a>
               </li>
               <li>
                 <div className="flex items-start gap-3 text-sm" style={{ color: 'var(--cream-muted)' }}>
                   <MapPin size={16} style={{ color: 'var(--gold)', marginTop: '2px', flexShrink: 0 }} />
-                  Near Chappan Bhog, Gurudwara, Sakchi
+                  Near Chappan Bhog, Gurudwara, Sakchi, Jamshedpur-831001
                 </div>
               </li>
             </ul>

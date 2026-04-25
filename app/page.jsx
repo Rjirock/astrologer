@@ -7,12 +7,14 @@ import Testimonials from "@/components/home/Testimonials";
 import GallerySection from "@/components/home/GallerySection";
 import CTABanner from "@/components/home/CTABanner";
 import MiniGallery from "@/components/shared/MiniGallery";
+import Photo_service from "../components/home/Photo_service"
 
 export default function HomePage() {
   return (
     <main>
       <HeroSection />
       <WhyChooseUs />
+      <Photo_service />
       <ServicesPreview />
       <Testimonials />
       <GallerySection />
