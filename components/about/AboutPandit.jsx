@@ -60,11 +60,19 @@ const bodyParagraphs = [
     id: 5,
     content: (
       <>
-        In Jamshedpur's fast-moving life, it's easy to look successful — yet feel completely lost
-        inside. Through the sacred science of{" "}
-        <strong className="gold-text">Nadi Jyotish</strong>, Pandit Ji doesn't just predict your
-        future — he helps you understand why things are happening in your life and how you can
-        realign your path with purpose, success, and inner peace.
+        In Jamshedpur's fast-moving life, it's easy to look successful… yet feel completely lost inside.
+        <br /><br />
+        You may have the job, the home, even the appreciation from others…<br />
+        But still wake up with a quiet emptiness in your heart.
+        <br /><br />
+        A deep longing for clarity, connection, and peace.
+        <br /><br />
+        That's where <strong className="gold-text">Shree Jagannath Pandit Ram Kisan Ji</strong>, one of the most trusted astrologers in Jamshedpur, walks beside you—<br />
+        Not with judgment, but with deep, ancient wisdom.
+        <br /><br />
+        Through the sacred science of <strong className="gold-text">Nadi Jyotish</strong>, he doesn't just predict your future—<br />
+        He helps you understand why things are happening in your life<br />
+        And how you can finally realign your path with purpose, success, and inner peace.
       </>
     ),
   },
