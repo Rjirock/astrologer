@@ -248,7 +248,7 @@ export default function ServicesSection() {
 
         /* ── Card image height ── */
         .card-img-wrapper {
-          height: 260px;
+          height: 380px;
         }
 
         /* ── Card body padding (desktop default) ── */
@@ -291,7 +291,7 @@ export default function ServicesSection() {
           }
 
           .card-img-wrapper {
-            height: 180px;
+            height: 280px;
           }
 
           .card-body-padding {
