@@ -18,7 +18,7 @@ const services = [
     title: "Get Lost Love Back",
     desc: "Love is precious — don't let it slip away. Ancient remedies to reunite you with your soulmate.",
     image: "/images/gallery-9.jpg",
-    delay: 120,
+    delay: 150,
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ const services = [
     title: "Husband Wife Dispute",
     desc: "Restore harmony in your marriage. Resolve conflicts and rebuild the sacred bond of love.",
     image: "/images/gallery-7.jpg",
-    delay: 240,
+    delay: 300,
   },
   {
     id: 4,
@@ -34,7 +34,7 @@ const services = [
     title: "Parents Approval",
     desc: "Facing family opposition? Sacred mantras and astrological guidance to win parental blessings.",
     image: "/images/gallery-1.jpg",
-    delay: 100,
+    delay: 0,
   },
   {
     id: 5,
@@ -42,7 +42,7 @@ const services = [
     title: "Love Problem Solution",
     desc: "Is love life filled with troubles? One consultation brings divine clarity and lasting peace.",
     image: "/images/gallery-6.jpg",
-    delay: 220,
+    delay: 150,
   },
   {
     id: 6,
@@ -50,7 +50,7 @@ const services = [
     title: "Career & Business Problem",
     desc: "Overcome professional obstacles with astrology. Unlock the path to success and prosperity.",
     image: "/images/career.jpg",
-    delay: 340,
+    delay: 300,
   },
   {
     id: 7,
@@ -58,7 +58,7 @@ const services = [
     title: "Relationship Problem",
     desc: "End the distance between hearts. Vedic remedies that bring love and understanding back.",
     image: "/images/gallery-10.jpg",
-    delay: 80,
+    delay: 0,
   },
   {
     id: 8,
@@ -66,7 +66,7 @@ const services = [
     title: "Kundali & Palm Reading",
     desc: "Reveal destiny through your birth chart and sacred palm lines — life, love, career & health.",
     image: "/images/best-astrologer.jpg",
-    delay: 200,
+    delay: 150,
   },
   {
     id: 9,
@@ -74,7 +74,7 @@ const services = [
     title: "Vastu & Numerology",
     desc: "Align your home and life with cosmic energies for prosperity, peace and positive vibrations.",
     image: "/images/gallery-5.jpg",
-    delay: 320,
+    delay: 300,
   },
 ];
 
@@ -82,6 +82,7 @@ const services = [
 function ServiceCard({ service, isVisible }) {
   return (
     <div
+      className="service-card-hover"
       style={{
         background: "linear-gradient(160deg, rgba(20,15,40,0.97) 0%, rgba(10,8,25,0.99) 100%)",
         border: "1px solid rgba(212,175,55,0.2)",
@@ -89,55 +90,60 @@ function ServiceCard({ service, isVisible }) {
         overflow: "hidden",
         position: "relative",
         cursor: "pointer",
+        /* ── Scroll-in: zoom out from big to normal ── */
         opacity: isVisible ? 1 : 0,
-        transform: isVisible ? "translateY(0) scale(1)" : "translateY(50px) scale(0.96)",
-        transition: `opacity 0.7s ease ${service.delay}ms, transform 0.7s ease ${service.delay}ms, border-color 0.4s ease, box-shadow 0.4s ease`,
+        transform: isVisible ? "scale(1) translateY(0)" : "scale(1.14) translateY(20px)",
+        transition: `
+          opacity   0.85s cubic-bezier(0.22, 1, 0.36, 1) ${service.delay}ms,
+          transform 0.85s cubic-bezier(0.22, 1, 0.36, 1) ${service.delay}ms,
+          border-color 0.4s ease,
+          box-shadow   0.4s ease
+        `,
       }}
-      className="service-card-hover"
     >
-      {/* Top gold line on hover — handled via CSS class below */}
+      {/* Gold shimmer top edge — reveals on hover */}
       <div className="card-top-line" />
 
-      {/* Image */}
-      <div style={{ position: "relative", width: "100%", height: "210px", overflow: "hidden" }}>
+      {/* ── Full-size Image — no bottom gradient overlay ── */}
+      <div
+        style={{
+          position: "relative",
+          width: "100%",
+          height: "260px",
+          overflow: "hidden",
+        }}
+      >
         <img
           src={service.image}
           alt={service.title}
           loading="lazy"
+          className="card-img-zoom"
           style={{
             width: "100%",
             height: "100%",
             objectFit: "cover",
-            objectPosition: "center top",
+            objectPosition: "center center",
             display: "block",
-            filter: "brightness(0.85) saturate(1.1)",
-            transition: "transform 0.6s ease",
+            filter: "brightness(0.88) saturate(1.15)",
+            transition: "transform 0.85s cubic-bezier(0.22,1,0.36,1), filter 0.4s ease",
           }}
-          className="card-img-zoom"
         />
-        {/* Gradient overlay */}
+
+        {/* Badge floats over image */}
         <div
           style={{
             position: "absolute",
-            bottom: 0, left: 0, right: 0,
-            height: "80px",
-            background: "linear-gradient(to top, rgba(10,8,25,1) 0%, transparent 100%)",
-            pointerEvents: "none",
-          }}
-        />
-        {/* Badge */}
-        <div
-          style={{
-            position: "absolute",
-            top: "12px",
-            right: "12px",
-            background: "rgba(212,175,55,0.15)",
-            border: "1px solid rgba(212,175,55,0.4)",
+            top: "14px",
+            right: "14px",
+            background: "rgba(8,6,20,0.7)",
+            backdropFilter: "blur(8px)",
+            WebkitBackdropFilter: "blur(8px)",
+            border: "1px solid rgba(212,175,55,0.55)",
             borderRadius: "20px",
-            padding: "4px 12px",
+            padding: "5px 14px",
             fontFamily: "'Cinzel', serif",
             fontSize: "10px",
-            letterSpacing: "1px",
+            letterSpacing: "1.5px",
             color: "#d4af37",
             zIndex: 3,
           }}
@@ -146,46 +152,50 @@ function ServiceCard({ service, isVisible }) {
         </div>
       </div>
 
-      {/* Body */}
-      <div style={{ padding: "18px 20px 20px" }}>
+      {/* ── Card Body ── */}
+      <div style={{ padding: "20px 22px 22px" }}>
         <div
           className="card-title-el"
           style={{
             fontFamily: "'Cinzel', serif",
-            fontSize: "16px",
+            fontSize: "15.5px",
             fontWeight: 600,
             color: "#e8d5a0",
-            marginBottom: "8px",
-            lineHeight: 1.3,
+            marginBottom: "9px",
+            lineHeight: 1.35,
             transition: "color 0.3s ease",
           }}
         >
           {service.title}
         </div>
+
         <div
           className="card-divider-el"
           style={{
             width: "36px",
             height: "1px",
             background: "linear-gradient(90deg, #d4af37, transparent)",
-            marginBottom: "10px",
-            transition: "width 0.4s ease",
+            marginBottom: "11px",
+            transition: "width 0.45s ease",
           }}
         />
+
         <p
           style={{
-            fontSize: "14px",
-            color: "rgba(255,255,255,0.5)",
-            lineHeight: 1.65,
-            marginBottom: "16px",
+            fontSize: "13.5px",
+            color: "rgba(255,255,255,0.47)",
+            lineHeight: 1.72,
+            marginBottom: "18px",
             fontStyle: "italic",
             fontFamily: "'Crimson Text', Georgia, serif",
           }}
         >
           {service.desc}
         </p>
+
         <a
           href="tel:7739606061"
+          className="card-cta-btn"
           style={{
             display: "flex",
             alignItems: "center",
@@ -198,18 +208,17 @@ function ServiceCard({ service, isVisible }) {
             fontSize: "11px",
             fontWeight: 700,
             letterSpacing: "1.5px",
-            padding: "11px 18px",
+            padding: "12px 18px",
             borderRadius: "6px",
             border: "none",
             cursor: "pointer",
             width: "100%",
             textAlign: "center",
-            transition: "all 0.3s ease",
-            boxShadow: "0 4px 20px rgba(212,175,55,0.25)",
+            transition: "all 0.35s cubic-bezier(0.22,1,0.36,1)",
+            boxShadow: "0 4px 18px rgba(212,175,55,0.2)",
           }}
-          className="card-cta-btn"
         >
-          📞 &nbsp;CALL NOW · +91 77396 06061
+          📞&nbsp; CALL NOW · +91 77396 06061
         </a>
       </div>
     </div>
@@ -233,7 +242,7 @@ export default function ServicesSection() {
             observer.disconnect();
           }
         },
-        { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+        { threshold: 0.08, rootMargin: "0px 0px -50px 0px" }
       );
       observer.observe(ref);
       observers.push(observer);
@@ -244,99 +253,94 @@ export default function ServicesSection() {
 
   return (
     <>
-      {/* Google Fonts */}
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap');
 
+        /* ── Section ── */
         .services-section-bg {
           background: linear-gradient(135deg, #0a0a1a 0%, #0d0d24 40%, #080818 70%, #0a0a1a 100%);
-          padding: 60px 20px 80px;
+          padding: 70px 20px 90px;
           position: relative;
           overflow: hidden;
         }
 
+        /* ── Starfield ── */
         .stars-overlay {
           position: absolute;
-          top: 0; left: 0; right: 0; bottom: 0;
+          inset: 0;
           background-image:
-            radial-gradient(1px 1px at 15% 20%, rgba(212,175,55,0.6) 0%, transparent 100%),
-            radial-gradient(1px 1px at 35% 60%, rgba(212,175,55,0.4) 0%, transparent 100%),
-            radial-gradient(1px 1px at 60% 10%, rgba(255,255,255,0.5) 0%, transparent 100%),
-            radial-gradient(1px 1px at 80% 40%, rgba(212,175,55,0.5) 0%, transparent 100%),
-            radial-gradient(1px 1px at 90% 75%, rgba(255,255,255,0.4) 0%, transparent 100%),
-            radial-gradient(1px 1px at 10% 80%, rgba(255,255,255,0.3) 0%, transparent 100%),
-            radial-gradient(1px 1px at 50% 50%, rgba(212,175,55,0.3) 0%, transparent 100%),
-            radial-gradient(1px 1px at 25% 90%, rgba(255,255,255,0.5) 0%, transparent 100%),
-            radial-gradient(1px 1px at 70% 85%, rgba(212,175,55,0.4) 0%, transparent 100%),
-            radial-gradient(1px 1px at 45% 30%, rgba(255,255,255,0.3) 0%, transparent 100%);
+            radial-gradient(1px 1px at  8% 15%, rgba(212,175,55,0.7) 0%, transparent 100%),
+            radial-gradient(1px 1px at 22% 68%, rgba(255,255,255,0.5) 0%, transparent 100%),
+            radial-gradient(1px 1px at 38% 12%, rgba(212,175,55,0.5) 0%, transparent 100%),
+            radial-gradient(1px 1px at 55% 80%, rgba(255,255,255,0.4) 0%, transparent 100%),
+            radial-gradient(1px 1px at 72% 35%, rgba(212,175,55,0.6) 0%, transparent 100%),
+            radial-gradient(1px 1px at 88% 58%, rgba(255,255,255,0.5) 0%, transparent 100%),
+            radial-gradient(1px 1px at 15% 90%, rgba(212,175,55,0.4) 0%, transparent 100%),
+            radial-gradient(1px 1px at 65%  5%, rgba(255,255,255,0.6) 0%, transparent 100%),
+            radial-gradient(1px 1px at 92% 22%, rgba(212,175,55,0.5) 0%, transparent 100%),
+            radial-gradient(1px 1px at 44% 44%, rgba(255,255,255,0.3) 0%, transparent 100%),
+            radial-gradient(1px 1px at 30% 30%, rgba(212,175,55,0.3) 0%, transparent 100%),
+            radial-gradient(1px 1px at 78% 88%, rgba(255,255,255,0.4) 0%, transparent 100%);
           pointer-events: none;
           z-index: 0;
         }
 
+        /* ── Grid ── */
         .services-grid-layout {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 24px;
-          max-width: 1080px;
+          gap: 28px;
+          max-width: 1100px;
           margin: 0 auto;
           position: relative;
           z-index: 1;
         }
-
-        @media (max-width: 768px) {
-          .services-grid-layout { grid-template-columns: 1fr; gap: 20px; }
+        @media (max-width: 900px) {
+          .services-grid-layout { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        }
+        @media (max-width: 560px) {
+          .services-grid-layout { grid-template-columns: 1fr; gap: 18px; }
         }
 
-        @media (min-width: 480px) and (max-width: 900px) {
-          .services-grid-layout { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        .service-card-hover {
-          transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease !important;
-        }
-
+        /* ── Card hover states ── */
         .service-card-hover:hover {
-          border-color: rgba(212,175,55,0.6) !important;
-          box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 30px rgba(212,175,55,0.12) !important;
-          transform: translateY(-6px) scale(1.01) !important;
+          border-color: rgba(212,175,55,0.65) !important;
+          box-shadow: 0 28px 70px rgba(0,0,0,0.75), 0 0 40px rgba(212,175,55,0.13) !important;
+          transform: scale(1.03) translateY(-6px) !important;
         }
-
-        .service-card-hover:hover .card-top-line {
-          opacity: 1 !important;
+        .service-card-hover:hover .card-top-line   { opacity: 1 !important; }
+        .service-card-hover:hover .card-img-zoom   {
+          transform: scale(1.09) !important;
+          filter: brightness(1.0) saturate(1.3) !important;
         }
+        .service-card-hover:hover .card-title-el   { color: #d4af37 !important; }
+        .service-card-hover:hover .card-divider-el { width: 64px !important; }
 
-        .service-card-hover:hover .card-img-zoom {
-          transform: scale(1.07);
-        }
-
-        .service-card-hover:hover .card-title-el {
-          color: #d4af37 !important;
-        }
-
-        .service-card-hover:hover .card-divider-el {
-          width: 60px !important;
-        }
-
+        /* ── Gold shimmer top line ── */
         .card-top-line {
           position: absolute;
           top: 0; left: 0; right: 0;
           height: 2px;
-          background: linear-gradient(90deg, transparent, #d4af37, transparent);
+          background: linear-gradient(90deg, transparent 0%, #d4af37 50%, transparent 100%);
           opacity: 0;
           transition: opacity 0.4s ease;
-          z-index: 2;
+          z-index: 4;
         }
 
+        /* ── CTA hover ── */
         .card-cta-btn:hover {
-          background: linear-gradient(135deg, #e8c547 0%, #d4af37 100%) !important;
-          box-shadow: 0 6px 30px rgba(212,175,55,0.45) !important;
-          transform: translateY(-1px);
+          background: linear-gradient(135deg, #f0d060 0%, #d4af37 100%) !important;
+          box-shadow: 0 8px 36px rgba(212,175,55,0.5) !important;
+          transform: translateY(-2px);
+          letter-spacing: 2px;
         }
 
+        /* ── Bottom btn hover ── */
         .bottom-view-btn:hover {
-          background: rgba(212,175,55,0.1) !important;
+          background: rgba(212,175,55,0.08) !important;
           border-color: #d4af37 !important;
-          box-shadow: 0 0 30px rgba(212,175,55,0.2) !important;
+          box-shadow: 0 0 40px rgba(212,175,55,0.22) !important;
+          letter-spacing: 3px;
         }
       `}</style>
 
@@ -344,50 +348,86 @@ export default function ServicesSection() {
         <div className="stars-overlay" />
 
         {/* ── Header ── */}
-        <div style={{ textAlign: "center", marginBottom: "48px", position: "relative", zIndex: 1 }}>
-          <div
+        <div
+          style={{
+            textAlign: "center",
+            marginBottom: "56px",
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
+          <span
             style={{
               display: "inline-block",
               fontFamily: "'Cinzel', serif",
               fontSize: "11px",
-              letterSpacing: "4px",
+              letterSpacing: "5px",
               color: "#d4af37",
               textTransform: "uppercase",
-              marginBottom: "12px",
-              opacity: 0.85,
+              marginBottom: "14px",
+              opacity: 0.8,
             }}
           >
             ✦ Sacred Services ✦
-          </div>
+          </span>
 
           <h2
             style={{
               fontFamily: "'Cinzel', serif",
-              fontSize: "clamp(22px, 4vw, 34px)",
+              fontSize: "clamp(24px, 4vw, 36px)",
               fontWeight: 700,
               color: "#fff",
-              marginBottom: "10px",
-              textShadow: "0 0 40px rgba(212,175,55,0.3)",
+              marginBottom: 0,
+              textShadow: "0 0 50px rgba(212,175,55,0.35)",
+              lineHeight: 1.2,
             }}
           >
             Divine Solutions for Life's Challenges
           </h2>
 
-          {/* Divider */}
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "10px", margin: "14px auto" }}>
-            <div style={{ width: "60px", height: "1px", background: "linear-gradient(90deg, transparent, #d4af37, transparent)" }} />
-            <div style={{ width: "8px", height: "8px", background: "#d4af37", transform: "rotate(45deg)", boxShadow: "0 0 10px rgba(212,175,55,0.8)" }} />
-            <div style={{ width: "60px", height: "1px", background: "linear-gradient(90deg, transparent, #d4af37, transparent)" }} />
+          {/* Gold divider */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "12px",
+              margin: "18px auto",
+            }}
+          >
+            <div
+              style={{
+                width: "70px",
+                height: "1px",
+                background: "linear-gradient(90deg, transparent, #d4af37)",
+              }}
+            />
+            <div
+              style={{
+                width: "9px",
+                height: "9px",
+                background: "#d4af37",
+                transform: "rotate(45deg)",
+                boxShadow: "0 0 14px rgba(212,175,55,0.9)",
+              }}
+            />
+            <div
+              style={{
+                width: "70px",
+                height: "1px",
+                background: "linear-gradient(90deg, #d4af37, transparent)",
+              }}
+            />
           </div>
 
           <p
             style={{
               fontSize: "17px",
-              color: "rgba(255,255,255,0.55)",
+              color: "rgba(255,255,255,0.5)",
               fontStyle: "italic",
-              maxWidth: "500px",
+              maxWidth: "520px",
               margin: "0 auto",
-              lineHeight: 1.6,
+              lineHeight: 1.65,
               fontFamily: "'Crimson Text', Georgia, serif",
             }}
           >
@@ -395,23 +435,33 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        {/* ── Grid ── */}
+        {/* ── Cards Grid ── */}
         <div className="services-grid-layout">
           {services.map((service, index) => (
-            <div key={service.id} ref={(el) => (cardRefs.current[index] = el)}>
+            <div
+              key={service.id}
+              ref={(el) => (cardRefs.current[index] = el)}
+            >
               <ServiceCard service={service} isVisible={visibleCards.has(index)} />
             </div>
           ))}
         </div>
 
         {/* ── Bottom CTA ── */}
-        <div style={{ textAlign: "center", marginTop: "50px", position: "relative", zIndex: 1 }}>
+        <div
+          style={{
+            textAlign: "center",
+            marginTop: "60px",
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
           <p
             style={{
               fontSize: "15px",
-              color: "rgba(255,255,255,0.45)",
+              color: "rgba(255,255,255,0.4)",
               fontStyle: "italic",
-              marginBottom: "16px",
+              marginBottom: "18px",
               fontFamily: "'Crimson Text', Georgia, serif",
             }}
           >
@@ -425,16 +475,16 @@ export default function ServicesSection() {
               alignItems: "center",
               gap: "10px",
               background: "transparent",
-              border: "1px solid rgba(212,175,55,0.5)",
+              border: "1px solid rgba(212,175,55,0.45)",
               color: "#d4af37",
               textDecoration: "none",
               fontFamily: "'Cinzel', serif",
-              fontSize: "12px",
-              letterSpacing: "2px",
-              padding: "13px 32px",
+              fontSize: "11px",
+              letterSpacing: "2.5px",
+              padding: "14px 36px",
               borderRadius: "6px",
               cursor: "pointer",
-              transition: "all 0.4s ease",
+              transition: "all 0.45s cubic-bezier(0.22,1,0.36,1)",
             }}
           >
             ✦ VIEW ALL SERVICES ✦

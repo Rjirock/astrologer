@@ -2,12 +2,6 @@ import { useRef, useEffect } from 'react';
 
 const images = [
   {
-    src: '/images/gallery-1.jpg',
-    title: 'Life Analysis Services',
-    desc: 'Life & Career Prediction with Birth Chart Reading',
-    featured: true,
-  },
-  {
     src: '/images/gallery-2.jpg',
     title: 'Palm Reading',
     desc: 'Discover your future through palm lines',
@@ -17,24 +11,6 @@ const images = [
     src: '/images/gallery-3.jpg',
     title: 'Astrology & Numerology',
     desc: 'Face Reading, Palm Reading & Kundali Analysis',
-    featured: false,
-  },
-  {
-    src: '/images/gallery-4.jpg',
-    title: 'Complete Analysis',
-    desc: 'Education, Finance, Marriage & More',
-    featured: false,
-  },
-  {
-    src: '/images/gallery-5.jpg',
-    title: 'Expert Astrology',
-    desc: 'Janam Kundali & Horoscope Analysis',
-    featured: false,
-  },
-  {
-    src: '/images/gallery-6.jpg',
-    title: 'Love Problem Solution',
-    desc: 'Get Your Love Back with Astrological Remedies',
     featured: false,
   },
   {
